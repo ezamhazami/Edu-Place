@@ -1,4 +1,4 @@
-# Edu-Place
+# Edu-Place , Quadra Maut
 A next-generation education platform designed to make learning smarter, easier, and more personalized.
 
 Software Tracks
