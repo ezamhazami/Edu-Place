@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tinder for Tutor</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="brand">Edu-place</div>
+        <nav class="nav-links">
+            <!-- TODO: Replace the href below with your real homepage URL -->
+            <a class="nav-btn" href="http://localhost:5000/aiService">Home</a>
+            <button class="nav-btn active" data-view="explore">Explore</button>
+            <button class="nav-btn" data-view="matches">Matches</button>
+            <button class="nav-btn" data-view="profile">Profile</button>
+            <button class="nav-btn" data-view="myposts">My Posts</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Explore View -->
+        <section id="view-explore" class="view active">
+            <div class="explore-hero">
+                <h1>Explore</h1>
+                <p class="muted">Discover, share & master new skills</p>
+            </div>
+            <div class="explore-actions">
+                <button id="btn-new-post" class="primary">+ New Post</button>
+            </div>
+            <div class="filter-bar">
+                <label>I want to learn</label>
+                <input id="filter-learn" type="text" placeholder="e.g. JavaScript" />
+                <button id="filter-apply" class="ghost primary-outline">Filter</button>
+                <button id="filter-clear" class="ghost">Clear</button>
+            </div>
+            <div id="explore-grid" class="grid"></div>
+        </section>
+
+        <!-- My Posts View -->
+        <section id="view-myposts" class="view">
+            <h2>My Posts</h2>
+            <div id="my-posts" class="grid"></div>
+        </section>
+
+        <!-- Matches View -->
+        <section id="view-matches" class="view">
+            <h2>Your Matches</h2>
+            <div class="matches-split">
+                <div id="matches-list" class="matches-list"></div>
+                <aside id="chat-drawer" class="chat-drawer hidden" aria-live="polite">
+                    <div class="chat-header">
+                        <div class="chat-peer">
+                            <div>
+                                <div id="chat-name" class="chat-name"></div>
+                                <div id="chat-sub" class="chat-sub muted"></div>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button id="feedback-btn" class="secondary">Feedback</button>
+                            <button id="report-in-chat" class="danger ghost">Report</button>
+                            <button id="close-chat" class="ghost">Close</button>
+                        </div>
+                    </div>
+                    <div id="chat-messages" class="chat-messages"></div>
+                    <div class="chat-schedule">
+                        <label for="schedule-datetime">Schedule a session</label>
+                        <input id="schedule-datetime" type="datetime-local" />
+                        <button id="schedule-save" class="secondary">Send Request</button>
+                        <span id="scheduled-label" class="muted"></span>
+                    </div>
+                    <div class="chat-input">
+                        <input id="chat-text" type="text" placeholder="Type a message" />
+                        <button id="chat-send" class="primary">Send</button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Profile View -->
+        <section id="view-profile" class="view">
+            <h2>Your Profile</h2>
+            <div class="grid" style="grid-template-columns: 1fr;">
+                <div class="course-card">
+                    <div class="course-title">Ezam Hazami</div>
+                    <div class="muted">@e_zam</div>
+                    
+                    <!-- Rating Section -->
+                    <div class="profile-rating-section">
+                        <div class="rating-summary">
+                            <div class="rating-stars-display">
+                                <span class="star active">★</span>
+                                <span class="star active">★</span>
+                                <span class="star active">★</span>
+                                <span class="star active">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <span class="rating-text">4.2/5.0 (12 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid" style="margin-top: 10px;">
+                        <label>I can teach</label>
+                        <div class="inline-field">
+                            <input id="profile-teach" type="text" placeholder="e.g., Python, Algebra" />
+                            <button id="profile-save" class="primary">Save</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Comments Section -->
+                    <div class="profile-comments-section">
+                        <h4>Recent Reviews</h4>
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-author">Suhail Nordin</span>
+                                <div class="comment-rating">
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                </div>
+                            </div>
+                            <div class="comment-text">"Great tutor! Very patient and explains concepts clearly. Highly recommended for Python beginners."</div>
+                            <div class="comment-date muted">2 days ago</div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-author">Farah Aina</span>
+                                <div class="comment-rating">
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
+                            <div class="comment-text">"Excellent teaching style. Helped me understand complex algorithms in just one session."</div>
+                            <div class="comment-date muted">1 week ago</div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span class="comment-author">Khairul Azri</span>
+                                <div class="comment-rating">
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                    <span class="star active">★</span>
+                                </div>
+                            </div>
+                            <div class="comment-text">"Amazing tutor! Very knowledgeable and makes learning fun. Will definitely book more sessions."</div>
+                            <div class="comment-date muted">2 weeks ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Match Modal -->
+    <div id="match-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="match-title">
+        <div class="modal-content">
+            <h3 id="match-title">It's a Match!</h3>
+            <p id="match-desc"></p>
+            <div class="modal-actions">
+                <button id="open-chat" class="primary">Open Chat</button>
+                <button id="close-match" class="secondary">Keep Searching</button>
+            </div>
+        </div>
+    </div>
+
+
+    <template id="card-template">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-head">
+                    <div class="card-name"></div>
+                    <button class="report-btn danger">Report</button>
+                </div>
+                <div class="pill-group">
+                    <span class="pill teach"></span>
+                    <span class="pill learn"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="explore-item-template">
+        <div class="course-card">
+            <div class="course-title"></div>
+            <div class="course-desc muted"></div>
+            <div class="meta">
+                <div class="meta-line teaches"></div>
+                <div class="meta-line learns"></div>
+                <div class="posted muted"></div>
+            </div>
+            <div class="course-actions">
+                <button class="primary match-btn">Match</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- New Post Modal -->
+    <div id="post-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="post-title">
+        <div class="modal-content">
+            <h3 id="post-title">Create a Post</h3>
+            <div class="form-grid">
+                <label>I want to learn</label>
+                <input id="post-learn" type="text" placeholder="e.g., Web Dev" />
+            </div>
+            <div class="modal-actions">
+                <button id="post-submit" class="primary">Post</button>
+                <button id="post-cancel" class="secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+        <div class="modal-content">
+            <h3 id="feedback-title">Rate Your Experience</h3>
+            <div class="feedback-content">
+                <div class="feedback-stars">
+                    <label>Rating:</label>
+                    <div class="stars" id="feedback-stars" aria-label="Rate your experience"></div>
+                </div>
+                <div class="form-grid">
+                    <label for="feedback-comment">Comments:</label>
+                    <textarea id="feedback-comment" rows="4" placeholder="Share your thoughts about this tutoring experience..."></textarea>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="feedback-submit" class="primary">Submit Feedback</button>
+                <button id="feedback-cancel" class="secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <template id="match-item-template">
+        <div class="match-item">
+            <div class="match-meta">
+                <div class="match-name"></div>
+                <div class="muted match-desc"></div>
+            </div>
+            <div class="match-actions">
+                <button class="primary open-chat">Chat</button>
+                <button class="danger ghost report">Report</button>
+            </div>
+        </div>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
